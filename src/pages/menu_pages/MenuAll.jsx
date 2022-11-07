@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import allImage from "../images/all.png"
+import menuCheckoutData from "./MenuCheckoutData";
 
 const MenuAll = ({ all, items }) => {
 const itemContainer = {
@@ -7,17 +7,26 @@ const itemContainer = {
     visible: { y: 0, opacity: 1 },
 };
 
+function addToCart(itemPicked){
+    console.log(itemPicked)
+    menuCheckoutData.push(itemPicked)
+    console.log(menuCheckoutData)
+}
+
 return (
+    
     <>
         {all &&
-            items.map((item, i) => (
+            items
+            .filter((item) => item.category === "drinks" || item.category === "lunch")
+            .map((item, i) => (
                 <motion.div
                     className="menu-items"
                     key={item.id}
                     variants={itemContainer}
                     transition={{ delay: i * 0.2 }}
                 >
-                    <img src={allImage} alt="menu all" />
+                    <img src={item.img} alt="all items" />
                     <motion.div className="item-content">
                         <motion.div className="item-title-box">
                             <motion.h5 className="item-title">{item.name}</motion.h5>
@@ -26,7 +35,7 @@ return (
                         </motion.div>
                         <motion.p className="item-desc">{item.description}</motion.p>
                     </motion.div>
-                    <button>Add to cart.</button>
+                    <button id="cartBtn" onClick={() => addToCart(item)}>Add to cart.</button>
                 </motion.div>
         ))}
     </>

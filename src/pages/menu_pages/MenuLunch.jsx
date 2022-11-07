@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import lunchImage from "../images/lunch.png";
+// import lunchImage from "../images/lunch.png";
 
 
 const MenuLunch = ({ lunch, items }) => {
@@ -20,7 +20,7 @@ const MenuLunch = ({ lunch, items }) => {
                             variants={itemContainer}
                             transition={{ delay: i * 0.2 }}
                         >
-                            <img src={lunchImage} alt="food lunch" />
+                            <img src={item.img} alt="food lunch" />
                             <motion.div className="item-content">
                                 <motion.div className="item-title-box">
                                     <motion.h5 className="item-title">{item.name}</motion.h5>

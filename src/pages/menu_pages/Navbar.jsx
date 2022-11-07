@@ -8,12 +8,6 @@ const breakpoints = [576, 768, 992, 1200];
 
 const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
-const clicked = (e) => {
-    e.preventDefault();
-    setCheckout={setCheckout};
-    // console.log('The button was clicked.');
-}
-
 return (
 <div
     className="Navbar"

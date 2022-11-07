@@ -7,7 +7,6 @@ import { useState } from "react";
 import MenuItems from "./menu_pages/MenuItems";
 import MenuData from "./menu_pages/MenuData";
 import Navbar from "./menu_pages/Navbar";
-import MenuCheckout from "./menu_pages/MenuCheckout";
 
 
 function Menu() {
@@ -25,6 +24,8 @@ function Menu() {
             padding: 70px 0;
         `}
         >
+            
+        <title>Menu</title>
 
         <Navbar
             setAll={setAll}
@@ -38,8 +39,9 @@ function Menu() {
             all={all}
             lunch={lunch}
             drinks={drinks}
-            checkout={checkout}
+            checkout={checkout}            
         />
+
 
         <Global
             styles={css`

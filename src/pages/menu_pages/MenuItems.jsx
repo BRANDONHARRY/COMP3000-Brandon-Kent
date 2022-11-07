@@ -8,7 +8,9 @@ import Lunch from "./MenuLunch";
 import Drinks from "./MenuDrinks";
 import Checkout from "./MenuCheckout";
 
-const MenuItems = ({ items, all, lunch, drinks, checkout }) => {
+import menuCheckoutData from "./MenuCheckoutData";
+
+const MenuItems = ({ items, all, lunch, drinks, checkout}) => {
 const container = {
 hidden: { opacity: 0 },
 visible: {
