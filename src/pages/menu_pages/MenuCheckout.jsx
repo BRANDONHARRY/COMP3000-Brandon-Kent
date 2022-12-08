@@ -7,33 +7,73 @@ const MenuCheckout = ({ checkout, items}) => {
         visible: { y: 0, opacity: 1 },
     };
 
+    function clearCart(){
+        localStorage.clear();
 
-    return (
+        console.log(localStorage);
+    }
+
+    let length = 0
+
+    function getItems(){
+        let localStorageData = JSON.parse(localStorage.getItem("items"));
+        
+        if(localStorageData == null){} else{length = localStorageData.length;}
+
+        let id = [];
+        let img = [];
+        let name = [];
+        let price = [];
+        let desc = [];
+        let i = 0
+        
+        for (i = 0; i < length; i++){
+            id[i] = localStorageData[i].id;
+            img[i] = localStorageData[i].img;
+            name[i] = localStorageData[i].name;
+            price[i] = localStorageData[i].price;
+            desc[i] = localStorageData[i].description;
+        }
+
+        for(let i = 0; i < length; i++){
+            return(
+                <>
+                <motion.div>
+                    <motion.h5>Test</motion.h5>
+                </motion.div>
+                </>
+            );
+        }
+
+        let data = 
         <>
-            {checkout &&
-                items
-                .filter((item) => item.category === "checkout")
-                .map((item, i) => (
-                    <motion.div
-                        className="menu-items"
-                        key={item.id}
-                        variants={itemContainer}
-                        transition={{ delay: i * 0.2}}
-                    >
-                        <img src={item.img} alt="checkout item" />
-                        <motion.div className="item-content">
-                            <motion.div className="item-title-box">
-                                <motion.h5 className="item-title">{item.name}</motion.h5>
-                                <motion.h5 className="item-price">${item.price}</motion.h5>
-                                
-                            </motion.div>
-                            <motion.p className="item-desc">{item.description}</motion.p>
-                        </motion.div>
-                    </motion.div>
-            ))}
+        <button id="emptyCartBtn" onClick={() => clearCart()}>Clear the cart.</button>
+
+        
+        <motion.div className="menu-items">
+            <img src={img[0]} alt="image" />
+            <motion.div className="item-content">
+                <motion.div className="item-title-box">
+                    <motion.h5 className="item-title">{name[0]}</motion.h5>
+                    <motion.h5 className="item-price">{price[0]}</motion.h5>
+                    
+                </motion.div>
+                <motion.p className="item-desc">{desc[0]}</motion.p>
+            </motion.div>
+        </motion.div>
+
+        {/* <motion.div>
+            {name}
+            {price}
+            {desc}
+        </motion.div> */}
+        
         </>
-    );
+
+        // return data;
+    }
+
+    return (getItems()) ;
 };
 
 export default MenuCheckout;
-

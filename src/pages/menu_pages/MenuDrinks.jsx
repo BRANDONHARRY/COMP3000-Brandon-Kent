@@ -7,6 +7,25 @@ const MenuDrinks = ({ drinks, items }) => {
         visible: { y: 0, opacity: 1 },
     };
 
+    let tempStorage = [];
+
+    function addToCart(itemPicked){
+        if (localStorage.getItem("items") === null){ 
+            tempStorage.push(itemPicked);
+            localStorage.setItem("items", JSON.stringify(tempStorage));
+            
+        } else {
+            tempStorage = JSON.parse(localStorage.getItem("items"));
+        
+            tempStorage.push(itemPicked);
+
+            localStorage.setItem("items", JSON.stringify(tempStorage));  
+        }
+        let localStorageData = JSON.parse(localStorage.getItem("items"));
+
+        console.log(localStorageData);
+    }
+
     return (
         <>
             {drinks &&
@@ -27,6 +46,7 @@ const MenuDrinks = ({ drinks, items }) => {
                                 </motion.div>
                                 <motion.p className="item-desc">{item.description}</motion.p>
                             </motion.div>
+                            <button id="cartBtn" onClick={() => addToCart(item)}>Add to cart.</button>
                         </motion.div>
                     ))}
         </>
