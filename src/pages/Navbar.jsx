@@ -16,7 +16,7 @@ function Navbar() {
                     </li>
 
                     <li  class="right">
-                        <a href="/contact">Contact</a>
+                        <a href="/about">About Us</a>
                     </li>
                 </ul>
             </nav>

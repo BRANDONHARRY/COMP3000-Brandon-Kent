@@ -13,65 +13,39 @@ const MenuCheckout = ({ checkout, items}) => {
         console.log(localStorage);
     }
 
+
     let length = 0
 
     function getItems(){
         let localStorageData = JSON.parse(localStorage.getItem("items"));
-        
-        if(localStorageData == null){} else{length = localStorageData.length;}
 
-        let id = [];
-        let img = [];
-        let name = [];
-        let price = [];
-        let desc = [];
-        let i = 0
-        
-        for (i = 0; i < length; i++){
-            id[i] = localStorageData[i].id;
-            img[i] = localStorageData[i].img;
-            name[i] = localStorageData[i].name;
-            price[i] = localStorageData[i].price;
-            desc[i] = localStorageData[i].description;
+        if(localStorageData == null){} else{length = localStorageData.length;}       
+
+        let dataArry = [];
+
+        for (let i = 0; i < length; i++) {
+            dataArry[i] = <>
+                <motion.div className="menu-items">
+                    <img src={localStorageData[i].img} alt="image" />
+                    <motion.div className="item-content">
+                        <motion.div className="item-title-box">
+                            <motion.h5 className="item-title">{localStorageData[i].name}</motion.h5>
+                            <motion.h5 className="item-price">{localStorageData[i].price}</motion.h5>
+                        </motion.div>
+                        <motion.p className="item-desc">{localStorageData[i].description}</motion.p>
+                    </motion.div>
+                </motion.div>
+            </>
         }
 
-        for(let i = 0; i < length; i++){
-            return(
-                <>
-                <motion.div>
-                    <motion.h5>Test</motion.h5>
-                </motion.div>
-                </>
-            );
-        }
+        let display = [
+            <> <button id="emptyCartBtn" onClick={() => clearCart()}>Clear the cart.</button> </>, 
+            dataArry
+        ]
 
-        let data = 
-        <>
-        <button id="emptyCartBtn" onClick={() => clearCart()}>Clear the cart.</button>
-
-        
-        <motion.div className="menu-items">
-            <img src={img[0]} alt="image" />
-            <motion.div className="item-content">
-                <motion.div className="item-title-box">
-                    <motion.h5 className="item-title">{name[0]}</motion.h5>
-                    <motion.h5 className="item-price">{price[0]}</motion.h5>
-                    
-                </motion.div>
-                <motion.p className="item-desc">{desc[0]}</motion.p>
-            </motion.div>
-        </motion.div>
-
-        {/* <motion.div>
-            {name}
-            {price}
-            {desc}
-        </motion.div> */}
-        
-        </>
-
-        // return data;
+        return display;
     }
+    
 
     return (getItems()) ;
 };
