@@ -25,7 +25,11 @@ const MenuCheckout = ({ checkout, items}) => {
 
         for (let i = 0; i < length; i++) {
             dataArry[i] = <>
-                <motion.div className="menu-items">
+                <motion.div className="menu-items"
+                            key={dataArry[i]}
+                            variants={itemContainer}
+                            transition={{ delay: i * 0.2 }}
+                >
                     <img src={localStorageData[i].img} alt="image" />
                     <motion.div className="item-content">
                         <motion.div className="item-title-box">
@@ -45,9 +49,18 @@ const MenuCheckout = ({ checkout, items}) => {
 
         return display;
     }
-    
 
-    return (getItems()) ;
+    return (
+        <>
+        {checkout && items
+        .map(() => (
+            getItems()
+        ))
+        }
+        </>
+    )
+
+    // return (getItems()) ;
 };
 
 export default MenuCheckout;
