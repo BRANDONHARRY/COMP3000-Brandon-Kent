@@ -13,7 +13,6 @@ const MenuCheckout = ({ checkout, items}) => {
         console.log(localStorage);
     }
 
-
     let length = 0
 
     function getItems(){
@@ -47,20 +46,41 @@ const MenuCheckout = ({ checkout, items}) => {
             dataArry
         ]
 
+        return dataArry;
+    }
+
+    function displayButton(){
+        let display = [
+            <> <button id="emptyCartBtn" onClick={() => clearCart()}>Clear the cart.</button> </>, 
+            
+        ]
+
         return display;
     }
 
+    // return (
+    //     <>
+    //     {checkout && 
+    //     items
+    //         .map((item) => (
+    //             getItems()
+    //             // displayButton()
+    //         ))
+    //         }
+    //         {
+    //             displayButton()
+    //         }
+
+    //     </>
+    // )
+
     return (
         <>
-        {checkout && items
-        .map(() => (
-            getItems()
-        ))
-        }
+            {getItems()}
+            {displayButton()}
         </>
-    )
+    ) ;
 
-    // return (getItems()) ;
 };
 
 export default MenuCheckout;
